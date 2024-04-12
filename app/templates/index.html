@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Главная страница
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Публикации</h1>
+
+    {% if opinions|length > 0 %}
+        {% for el in opinions %}
+        <div class="alert alert-info">
+            <h2>{{ el.title }}</h2>
+            <h2>{{ el.intro }}</h2>
+            <a href="/{{ el.id }}" class="btn btn-outline-info">Подробнее</a>
+        </div>
+        {% endfor %}
+    {% else %}
+    <p>Публикаций на сайте ещё нет</p>
+    {% endif %}
+</div>
+{% endblock %}
