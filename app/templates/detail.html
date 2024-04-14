@@ -12,12 +12,16 @@
         <h5 class="card-title">{{ opinion.title }}</h5>
         <p class="card-text">{{ opinion.text }}</p>
         <h7>Дата публикации: {{ opinion.date.date() }}</h7>
-        <div class="d-grid gap-2 col-2 mx-auto">
-            <a href="" class="btn btn-outline-success">Изменить</a>
-            <a href="" class="btn btn-outline-danger">Удалить</a>
+        <div class="card-footer text-muted">
+            <div class="second">
+                <div class="col-md-12 text-center">
+                    <form>
+                        <a href="" class="btn btn-outline-success">Изменить</a>
+                        <a href="" class="btn btn-outline-danger">Удалить</a>
+                    </form>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="card-footer text-muted">
     </div>
 </div>
 
