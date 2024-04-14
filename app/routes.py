@@ -8,7 +8,7 @@ from flask_login import login_user, logout_user, login_required
 @app.route('/')
 @app.route('/home')
 def index():
-    opinions = Opinion.query.all()
+    opinions = Opinion.query.order_by(Opinion.date).all()
     return render_template('index.html', opinions=opinions)
 
 
@@ -18,6 +18,25 @@ def about():
 
 
 # записи
+
+
+@app.route('/create', methods=['POST', 'GET'])
+def create():
+    if request.method == 'POST':
+        title = request.form['title']
+        intro = request.form['intro']
+        text = request.form['text']
+
+        opinion = Opinion(title=title, intro=intro, text=text)
+
+        try:
+            db.session.add(opinion)
+            db.session.commit()
+            return redirect('/')
+        except:
+            return 'Возникла ошибка при добавлении публикации'
+    else:
+        return render_template('create.html')
 
 
 @app.route('/<int:id>/')

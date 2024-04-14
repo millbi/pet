@@ -16,13 +16,12 @@
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li><a href="{{ url_for('index') }}" class="nav-link px-2 link-dark">Главная</a></li>
             <li><a href="{{ url_for('profile') }}" class="nav-link px-2 link-secondary">Профиль</a></li>
-            <li><a href="" class="nav-link px-2 link-secondary">Новая публикация</a></li>
+            <li><a href="{{ url_for('create') }}" class="nav-link px-2 link-secondary">Новая публикация</a></li>
             <li><a href="{{ url_for('about') }}" class="nav-link px-2 link-secondary">О нас</a></li>
         </ul>
-
-        <div class="col-md-3 text-end">
-            <a href="{{ url_for('login_page') }}" class="btn btn-outline-primary me-2">Войти</a>
-            <a href="{{ url_for('registration') }}" class="btn btn-outline-primary me-2">Зарегистрироваться</a>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a href="{{ url_for('login_page') }}" class="btn btn-primary me-md-2">Войти</a>
+            <a href="{{ url_for('registration') }}" class="btn btn-primary">Зарегистрироваться</a>
         </div>
     </header>
     {% block content %}{% endblock %}

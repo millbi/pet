@@ -7,15 +7,17 @@
 {% block content %}
 <div class="container mt-5">
     <h1>Публикации</h1>
-
     {% if opinions|length > 0 %}
-        {% for el in opinions %}
-        <div class="alert alert-info">
-            <h2>{{ el.title }}</h2>
-            <h2>{{ el.intro }}</h2>
+    {% for el in opinions %}
+    <div class="card">
+        <h5 class="card-header">{{ el.title }}</h5>
+        <div class="card-body">
+            <p class="card-text">{{ el.intro }}</p>
             <a href="/{{ el.id }}" class="btn btn-outline-info">Подробнее</a>
         </div>
-        {% endfor %}
+    </div>
+    <br>
+    {% endfor %}
     {% else %}
     <p>Публикаций на сайте ещё нет</p>
     {% endif %}

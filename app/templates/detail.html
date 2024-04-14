@@ -5,13 +5,20 @@
 {% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    <h1>{{ opinion.title }}</h1>
-    <div class="alert alert-info">
-        <h2>{{ opinion.text }}</h2>
-        <h2>Дата публикации: {{ opinion.date }}</h2>
-        <a href="" class="btn btn-outline-success">Изменить</a>
-        <a href="" class="btn btn-outline-danger">Удалить</a>
+<div class="card text-center">
+    <div class="card-header">
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{ opinion.title }}</h5>
+        <p class="card-text">{{ opinion.text }}</p>
+        <h7>Дата публикации: {{ opinion.date.date() }}</h7>
+        <div class="d-grid gap-2 col-2 mx-auto">
+            <a href="" class="btn btn-outline-success">Изменить</a>
+            <a href="" class="btn btn-outline-danger">Удалить</a>
+        </div>
+    </div>
+    <div class="card-footer text-muted">
     </div>
 </div>
+
 {% endblock %}
