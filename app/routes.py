@@ -21,6 +21,7 @@ def about():
 
 
 @app.route('/create', methods=['POST', 'GET'])
+@login_required
 def create():
     if request.method == 'POST':
         title = request.form['title']

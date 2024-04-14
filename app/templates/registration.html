@@ -23,47 +23,45 @@
                     </div>
                     {% endif %}
                     {% endwith %}
-                    <form method="POST" action="/signup">
-                        <div class="box">
-                            <form action="/registration" method="POST">
-                                <div class="field">
-                                    <div class="control">
-                                        <input class="form-control form-control-sm" type="text" name="login"
-                                               placeholder="Логин"
-                                               autofocus="">
-                                    </div>
+                    <br>
+                    <div class="box">
+                        <form action="/registration" method="POST">
+                            <div class="field">
+                                <div class="control">
+                                    <input class="form-control form-control-sm" type="text" name="login"
+                                           placeholder="Логин"
+                                           autofocus="">
                                 </div>
-                                <br>
-                                <div class="field">
-                                    <div class="control">
-                                        <input class="form-control form-control-sm" type="password" name="psw"
-                                               placeholder="Пароль">
-                                    </div>
+                            </div>
+                            <br>
+                            <div class="field">
+                                <div class="control">
+                                    <input class="form-control form-control-sm" type="password" name="psw"
+                                           placeholder="Пароль">
                                 </div>
-                                <br>
-                                <div class="field">
-                                    <div class="control">
-                                        <input class="form-control form-control-sm" type="password" name="psw2"
-                                               placeholder="Повторите пароль">
-                                    </div>
+                            </div>
+                            <br>
+                            <div class="field">
+                                <div class="control">
+                                    <input class="form-control form-control-sm" type="password" name="psw2"
+                                           placeholder="Повторите пароль">
                                 </div>
-                            </form>
+                            </div>
+                            <br>
+                            <div class="d-flex align-items-center justify-content-center">
+                                <div class="form-group">
+                                    <button class="btn btn-outline-info" type="submit">Зарегистрироваться</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <div class="border-top pt-3">
+                                <small class="text-muted">
+                                    Уже есть аккаунт? <a class="ml-2" href="{{ url_for ('login_page') }}">Войти</a>
+                                </small>
+                            </div>
                         </div>
-                    </form>
-                </div>
-                <br>
-                <div class="d-flex align-items-center justify-content-center">
-                    <div class="form-group">
-                        <button class="btn btn-outline-info" type="submit">Зарегистрироваться</button>
                     </div>
-                </div>
-                <br>
-            </div>
-            <div class="d-flex align-items-center justify-content-center">
-                <div class="border-top pt-3">
-                    <small class="text-muted">
-                        Уже есть аккаунт? <a class="ml-2" href="{{ url_for ('login_page') }}">Войти</a>
-                    </small>
                 </div>
             </div>
         </div>
