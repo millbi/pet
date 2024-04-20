@@ -11,15 +11,17 @@
     <div class="card-body">
         <h5 class="card-title">{{ opinion.title }}</h5>
         <p class="card-text">{{ opinion.text }}</p>
-        <h7>Автор: {{ opinion.author.login }}</h7>
-        <br>
         <h7>Дата публикации: {{ opinion.date.date() }}</h7>
         <div class="card-footer text-muted">
             <div class="second">
                 <div class="col-md-12 text-center">
                     <form>
-                        <a href="" class="btn btn-outline-success">Изменить</a>
-                        <a href="" class="btn btn-outline-danger">Удалить</a>
+                        {% if current_user.is_authenticated and current_user.login == opinion.user %}
+                            <div>
+                                <a href="/news/{{ opinion.id }}" class="btn btn-outline-success">Изменить</a>
+                                <a href="/news_delete/{{ opinion.id }}" class="btn btn-outline-danger">Удалить</a>
+                            </div>
+                        {% endif %}
                     </form>
                 </div>
             </div>
