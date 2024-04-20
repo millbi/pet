@@ -7,7 +7,7 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     login = db.Column(db.String(128), nullable=False, unique=True)
     psw = db.Column(db.Text, nullable=False)
-    opinions = db.relationship('Opinion', backref='user')
+    opinions = db.relationship('Opinion', backref='author')
 
     def __repr__(self):
         return f'<Users {self.title}>'
@@ -20,7 +20,7 @@ class Opinion(db.Model):
     text = db.Column(db.Text, nullable=False)
     date = db.Column(db.DateTime,
                      default=datetime.datetime.now)
-    author = db.Column(db.Integer, db.ForeignKey('user.id'))
+    author_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
         return f'<Opinions {self.title}>'

@@ -11,6 +11,8 @@
     <div class="card-body">
         <h5 class="card-title">{{ opinion.title }}</h5>
         <p class="card-text">{{ opinion.text }}</p>
+        <h7>Автор: {{ opinion.author.login }}</h7>
+        <br>
         <h7>Дата публикации: {{ opinion.date.date() }}</h7>
         <div class="card-footer text-muted">
             <div class="second">

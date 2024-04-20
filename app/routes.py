@@ -2,7 +2,7 @@ from app import app, db, manager
 from app.models import Opinion, User
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import render_template, redirect, url_for, request, flash
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 
 
 @app.route('/')
@@ -28,7 +28,8 @@ def create():
         intro = request.form['intro']
         text = request.form['text']
 
-        opinion = Opinion(title=title, intro=intro, text=text)
+        author = current_user.id
+        opinion = Opinion(title=title, intro=intro, text=text, author_id=author)
 
         try:
             db.session.add(opinion)
