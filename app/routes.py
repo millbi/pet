@@ -17,7 +17,7 @@ def about():
     return render_template('about.html')
 
 
-# записи
+# Записи
 
 
 @app.route('/create', methods=['POST', 'GET'])
@@ -90,7 +90,7 @@ def news_delete(id):
     return redirect('/')
 
 
-# пользователь
+# Пользователь
 
 
 @app.route('/login', methods=['GET', 'POST'])
