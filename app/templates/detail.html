@@ -11,15 +11,15 @@
     <div class="card-body">
         <h5 class="card-title">{{ opinion.title }}</h5>
         <p class="card-text">{{ opinion.text }}</p>
+        <h7>Автор: {{ opinion.author.login }}</h7>
+        <br>
         <h7>Дата публикации: {{ opinion.date.date() }}</h7>
         <div class="card-footer text-muted">
             <div class="second">
                 <div class="col-md-12 text-center">
-                    <form></form>
-                            <div>
-                                <a href="/news/{{ opinion.id }}" class="btn btn-outline-success">Изменить</a>
-                                <a href="/news_delete/{{ opinion.id }}" class="btn btn-outline-danger">Удалить</a>
-                            </div>
+                    <form>
+                        <a href="/news/{{ opinion.id }}" class="btn btn-outline-success">Изменить</a>
+                        <a href="/news_delete/{{ opinion.id }}" class="btn btn-outline-danger">Удалить</a>
                     </form>
                 </div>
             </div>
