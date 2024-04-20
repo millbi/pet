@@ -1,7 +1,7 @@
 from app import app, db
 from app.models import Opinion, User
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask import render_template, redirect, url_for, request, flash
+from flask import render_template, redirect, url_for, request, flash, abort
 from flask_login import login_user, logout_user, login_required
 
 
@@ -44,6 +44,47 @@ def create():
 def detail(id):
     opinion = Opinion.query.get(id)
     return render_template('detail.html', opinion=opinion)
+
+
+# Изменение
+@app.route('/news/<int:id>', methods=['GET', 'POST'])
+@login_required
+def edit_news(id):
+    if request.method == 'POST':
+        title = request.form['title']
+        intro = request.form['intro']
+        text = request.form['text']
+
+        opinion = Opinion(title=title, intro=intro, text=text)
+
+        try:
+            db.session.add(opinion)
+            opinion = db.session.get(Opinion, id)
+            db.session.delete(opinion)
+            db.session.commit()
+            return redirect('/')
+        except:
+            return 'Возникла ошибка при добавлении публикации'
+    else:
+        opinion = db.session.get(Opinion, id)
+        title = opinion.title
+        intro = opinion.intro
+        text = opinion.text
+        return render_template('edit.html', title=title, intro=intro, text=text)
+
+
+# Удаление
+@app.route('/news_delete/<int:id>', methods=['GET', 'POST'])
+@login_required
+def news_delete(id):
+    db_sess = db.session()
+    news = db_sess.query(Opinion).filter(Opinion.id == id).first()
+    if news:
+        db_sess.delete(news)
+        db_sess.commit()
+    else:
+        abort(404)
+    return redirect('/')
 
 
 # пользователь
