@@ -3,6 +3,16 @@ from flask_login import UserMixin
 import datetime
 
 
+class User(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    login = db.Column(db.String(128), nullable=False, unique=True)
+    psw = db.Column(db.Text, nullable=False)
+    opinions = db.relationship('Opinion', backref='user')
+
+    def __repr__(self):
+        return f'<Users {self.title}>'
+
+
 class Opinion(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
@@ -10,18 +20,10 @@ class Opinion(db.Model):
     text = db.Column(db.Text, nullable=False)
     date = db.Column(db.DateTime,
                      default=datetime.datetime.now)
+    author = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
-        return f'<opinions {self.title}>'
-
-
-class User(db.Model, UserMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    login = db.Column(db.String(128), nullable=False, unique=True)
-    psw = db.Column(db.Text, nullable=False)
-
-    def __repr__(self):
-        return f'<users {self.title}>'
+        return f'<Opinions {self.title}>'
 
 
 @manager.user_loader

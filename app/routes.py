@@ -1,4 +1,4 @@
-from app import app, db
+from app import app, db, manager
 from app.models import Opinion, User
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import render_template, redirect, url_for, request, flash
@@ -8,7 +8,7 @@ from flask_login import login_user, logout_user, login_required
 @app.route('/')
 @app.route('/home')
 def index():
-    opinions = Opinion.query.order_by(Opinion.date).all()
+    opinions = Opinion.query.order_by(Opinion.date.desc()).all()
     return render_template('index.html', opinions=opinions)
 
 
@@ -100,3 +100,9 @@ def profile():
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+
+@manager.unauthorized_handler
+def unauthorized():
+    flash('Вы не вошли в систему.')
+    return redirect(url_for('login_page'))
