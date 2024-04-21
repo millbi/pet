@@ -17,7 +17,7 @@
         <div class="card-footer text-muted">
             <div class="second">
                 <div class="col-md-12 text-center">
-                        {% if current_user.is_authenticated and current_user.login == opinion.user %}
+                        {% if current_user.is_authenticated and current_user.login == opinion.author.login %}
                         <form></form>
                             <div>
                                 <a href="/news/{{ opinion.id }}" class="btn btn-outline-success">Изменить</a>
