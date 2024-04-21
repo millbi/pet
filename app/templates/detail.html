@@ -17,10 +17,13 @@
         <div class="card-footer text-muted">
             <div class="second">
                 <div class="col-md-12 text-center">
-                    <form>
-                        <a href="/news/{{ opinion.id }}" class="btn btn-outline-success">Изменить</a>
-                        <a href="/news_delete/{{ opinion.id }}" class="btn btn-outline-danger">Удалить</a>
-                    </form>
+                        {% if current_user.is_authenticated and current_user.login == opinion.user %}
+                        <form></form>
+                            <div>
+                                <a href="/news/{{ opinion.id }}" class="btn btn-outline-success">Изменить</a>
+                                <a href="/news_delete/{{ opinion.id }}" class="btn btn-outline-danger">Удалить</a>
+                            </div>
+                        {% endif %}
                 </div>
             </div>
         </div>
